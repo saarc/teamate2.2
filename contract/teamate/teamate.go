@@ -145,8 +145,10 @@ func (s *SmartContract) getHistory(ctx contractapi.TransactionContextInterface, 
 
 func main() {
 	chaincode, err := contractapi.NewChaincode(&SmartContract{})
+
 	if err != nil {
 		log.Panicf("Error creating teamate chaincode: %v", err)
+		return
 	}
 
 	if err := chaincode.Start(); err != nil {
