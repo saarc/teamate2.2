@@ -59,9 +59,9 @@ peer lifecycle chaincode commit -o localhost:7050 --channelID $CHANNEL_NAME --na
 peer lifecycle chaincode querycommitted --channelID $CHANNEL_NAME --name ${CC_NAME} 
 
 
-fcn_call='{"function":"addUser","Args":["user1"]}'
+fcn_call='{"function":"AddUser","Args":["user1"]}'
 peer chaincode invoke -o localhost:7050 -C $CHANNEL_NAME -n ${CC_NAME} -c ${fcn_call} $PEER_CONN_PARMS
 
-peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["readRating"]}' 
+peer chaincode query -C $CHANNEL_NAME -n ${CC_NAME} -c '{"Args":["ReadRating","user1"]}' 
 
 
