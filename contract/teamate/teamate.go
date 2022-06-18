@@ -32,7 +32,7 @@ type HistoryQueryResult struct {
 }
 
 //func (s *SmartContract) addUser(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-func (s *SmartContract) addUser(ctx contractapi.TransactionContextInterface, username string) error {
+func (s *SmartContract) AddUser(ctx contractapi.TransactionContextInterface, username string) error {
 
 	var user = UserRating{User: username, Average: 0, Pnum: 0, Pstate: "free"}
 	
@@ -42,7 +42,7 @@ func (s *SmartContract) addUser(ctx contractapi.TransactionContextInterface, use
 }
 
 //func (s *SmartContract) addRating(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
-func (s *SmartContract) addRating(ctx contractapi.TransactionContextInterface, username string, projectname string, projectscore string) error {
+func (s *SmartContract) AddRating(ctx contractapi.TransactionContextInterface, username string, projectname string, projectscore string) error {
 
 	// getState User
 	userAsBytes, err := ctx.GetStub().GetState(username)
@@ -77,7 +77,7 @@ func (s *SmartContract) addRating(ctx contractapi.TransactionContextInterface, u
 
 }
 
-// func (s *SmartContract) readRating(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
+// func (s *SmartContract) ReadRating(APIstub shim.ChaincodeStubInterface, args []string) sc.Response {
 func (s *SmartContract) readRating(ctx contractapi.TransactionContextInterface, username string) (*UserRating, error) {
 
 	UserAsBytes, err := ctx.GetStub().GetState(username)
